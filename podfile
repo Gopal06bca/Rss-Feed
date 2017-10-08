@@ -1,0 +1,26 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+use_frameworks!
+
+target ‘RssFeed’ do
+    
+    pod 'FeedKit'
+    pod 'Firebase/Auth'
+    pod 'GoogleSignIn'
+    pod 'SDWebImage'
+    pod 'NVActivityIndicatorView'
+    pod 'ReachabilitySwift'
+    pod 'Toaster'
+    
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == 'RssFeed'
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '3.2'
+            end
+        end
+    end
+end
